@@ -1,6 +1,7 @@
 const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
+  projectId: 'eu617r',
   e2e: {
     baseUrl: 'https://magento2-demo.magebit.com/',
     viewportWidth: 1280,

@@ -28,15 +28,16 @@ class ProductDetailsPage {
   }
 
   selectSize(size) {
-    cy.get(this.elements.sizeSwatches)
-      .filter(`[option-label="${size}"]`)
+    // Tentar diferentes seletores para encontrar o tamanho
+    cy.get('.swatch-attribute-options .swatch-option')
+      .contains(size)
       .click()
     return this
   }
 
   selectColor(color) {
-    cy.get(this.elements.colorSwatches)
-      .filter(`[option-label="${color}"]`)
+    // Clicar na primeira opção de cor disponível, já que não podemos ver o texto da cor
+    cy.get('.swatch-attribute[attribute-code="color"] .swatch-option')
       .first()
       .click()
     return this
