@@ -1,0 +1,48 @@
+{
+  "users": {
+    "validUser": {
+      "firstName": "João",
+      "lastName": "Silva",
+      "email": "joao.silva@example.com",
+      "password": "MinhaSenh@123"
+    },
+    "existingUser": {
+      "email": "roni_cost@example.com",
+      "password": "roni_cost3@example.com"
+    }
+  },
+  "shippingInfo": {
+    "default": {
+      "firstName": "João",
+      "lastName": "Silva",
+      "company": "Empresa Teste",
+      "streetAddress": "Rua das Flores, 123",
+      "city": "São Paulo",
+      "region": "São Paulo",
+      "postcode": "01234-567",
+      "country": "Brazil",
+      "telephone": "(11) 99999-9999"
+    }
+  },
+  "products": {
+    "testProduct1": {
+      "name": "Argus All-Weather Tank",
+      "category": "Men",
+      "size": "M",
+      "color": "Gray",
+      "sku": "MT07"
+    },
+    "testProduct2": {
+      "name": "Hero Hoodie",
+      "category": "Men",
+      "size": "M",
+      "color": "Black",
+      "sku": "MH01"
+    }
+  },
+  "searchTerms": {
+    "validSearch": "shirt",
+    "invalidSearch": "xyz123notfound",
+    "popularSearch": "jacket"
+  }
+}
