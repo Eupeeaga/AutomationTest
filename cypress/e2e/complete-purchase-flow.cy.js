@@ -6,9 +6,7 @@ describe('Fluxo completo de compra', () => {
       testData = data
     })
 
-    // Interceptar chamadas relacionadas ao CAPTCHA
     cy.intercept('POST', '**/customer/account/loginPost/**', (req) => {
-      // Log da requisição original para debug
       cy.log('Interceptando requisição de login')
       cy.log(`Corpo original: ${req.body}`)
 
@@ -20,13 +18,10 @@ describe('Fluxo completo de compra', () => {
         searchParams.set('captcha_form_id', 'user_login')
         searchParams.set('captcha_string', 'bypass')
         
-        // Adiciona timestamp para evitar cache
         searchParams.set('timestamp', Date.now().toString())
         
-        // Atualiza o corpo da requisição
         req.body = searchParams.toString()
         
-        // Log da requisição modificada
         cy.log(`Corpo modificado: ${req.body}`)
       } else {
         cy.log('Aviso: Corpo da requisição não está no formato esperado')
@@ -65,12 +60,10 @@ describe('Fluxo completo de compra', () => {
     // 3. Adicionar Produto ao Carrinho
     // Ir direto para um produto específico para evitar problemas de navegação
     cy.visit('/radiant-tee.html')
-    cy.wait(2000) // Aguardar a página carregar completamente
+    cy.wait(2000)
 
-    // Debug: Log para verificar se a página carregou
     cy.log('Página do produto carregada')
 
-    // Debug: Verificar se os elementos existem antes de interagir
     cy.get('.swatch-attribute-options').should('exist').then($el => {
       cy.log(`Encontrados ${$el.find('.swatch-option').length} opções de produto`)
     })
@@ -101,18 +94,15 @@ describe('Fluxo completo de compra', () => {
     // Adicionar ao carrinho
     cy.get('#product-addtocart-button').click()
     
-    // Aguardar mensagem de sucesso e verificar o carrinho
     cy.get('.message-success').should('exist')
     cy.wait(2000)
 
     // 4. Ir para o carrinho
     cy.get('.showcart').should('be.visible').click()
-    cy.wait(2000) // Aguardar o mini carrinho abrir
+    cy.wait(2000)
     
-    // Verificar se o mini carrinho está visível
     cy.get('.block-minicart').should('be.visible')
     
-    // Clicar no botão de checkout dentro do mini carrinho
     cy.get('#top-cart-btn-checkout')
       .should('be.visible')
       .click()
@@ -120,15 +110,13 @@ describe('Fluxo completo de compra', () => {
     // Preencher informações de envio
     cy.get('[name="street[0]"]').type('123 Test Street')
     cy.get('[name="city"]').type('Test City')
-    cy.get('[name="region_id"]').select('1') // Primeiro estado disponível
+    cy.get('[name="region_id"]').select('1')
     cy.get('[name="postcode"]').type('12345')
     cy.get('[name="telephone"]').type('1234567890')
 
-    // Selecionar método de envio
     cy.get('[type="radio"]').first().check()
     cy.get('.button.action.continue.primary').click()
 
-    // Finalizar compra
     cy.get('.action.primary.checkout').click()
 
     // Verificar sucesso da compra

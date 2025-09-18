@@ -51,9 +51,7 @@ class CreateAccountPage {
   }
 
   verifyAccountCreated() {
-    // Apenas verifica se foi redirecionado para a página da conta
     cy.url().should('include', '/customer/account/')
-    // Verifica se há algum elemento que indica que está logado
     cy.get('.authorization-link').should('not.contain', 'Sign In')
     return this
   }

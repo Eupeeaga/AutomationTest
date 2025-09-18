@@ -28,7 +28,6 @@ class ProductDetailsPage {
   }
 
   selectSize(size) {
-    // Tentar diferentes seletores para encontrar o tamanho
     cy.get('.swatch-attribute-options .swatch-option')
       .contains(size)
       .click()
@@ -36,7 +35,6 @@ class ProductDetailsPage {
   }
 
   selectColor(color) {
-    // Clicar na primeira opção de cor disponível, já que não podemos ver o texto da cor
     cy.get('.swatch-attribute[attribute-code="color"] .swatch-option')
       .first()
       .click()
@@ -51,7 +49,6 @@ class ProductDetailsPage {
   }
 
   addToCart() {
-    // Espera os botões serem ativados antes de clicar
     cy.get(this.elements.addToCartButton)
       .should('not.be.disabled')
       .click()
@@ -59,7 +56,6 @@ class ProductDetailsPage {
   }
 
   addToCartWithOptions(quantity = 1, size = null, color = null) {
-    // Espera a página carregar antes de interagir
     cy.get(this.elements.configurationOptions).should('be.visible')
     
     if (size) this.selectSize(size)

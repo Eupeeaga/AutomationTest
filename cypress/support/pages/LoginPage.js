@@ -41,8 +41,7 @@ class LoginPage {
   }
 
   verifyLoginSuccess() {
-    // Verifica se o usuário está logado verificando elementos específicos do Magento
-    cy.wait(2000) // Aguardar o redirecionamento
+    cy.wait(2000)
     cy.get('.page.messages').should('not.contain', 'The account sign-in was incorrect')
     cy.get('.page-title-wrapper').should('contain', 'My Account')
     cy.get('.box-information').should('exist')
