@@ -1,4 +1,4 @@
-# Projeto de Automação de Testes - Magento Demo
+# Projeto de Automação de Testes em Cypress - Magento Demo
 
 Este projeto contém automação de testes end-to-end para o site de demonstração do Magento usando Cypress e o padrão Page Object Model (POM).
 
@@ -36,6 +36,12 @@ npm install
 ```bash
 npm run cypress:open
 ```
+- Aguardar a abertura do Cypress **Test Runner**.
+- Selecionar o tipo de execução **E2E Testing**.
+- Escolher o **navegador** desejado **(Chrome, Edge, Electron, etc.)**.
+- Selecionar o teste **complete-purchase-flow.cy.js**.
+- Acompanhar a execução dos testes em tempo real.
+- Analisar os resultados (✓ sucesso / ✗ falha) e logs de depuração.
 
 ### Modo Headless (CLI)
 ```bash
